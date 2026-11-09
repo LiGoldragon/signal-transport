@@ -1,0 +1,25 @@
+[package]
+name         = "signal-transport"
+version      = "0.1.0"
+edition      = "2024"
+rust-version = "1.89"
+license      = "MIT OR Apache-2.0"
+repository   = "https://github.com/LiGoldragon/signal-transport"
+description  = "Asynchronous Signal framing over tokio streams, for Nexus transports."
+publish      = false
+
+[lib]
+name = "signal_transport"
+path = "src/lib.rs"
+
+[dependencies]
+signal = { git = "https://github.com/LiGoldragon/signal", rev = "6d4eb74", default-features = false }
+tokio = { version = "1", default-features = false, features = ["io-util"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["io-util", "macros", "rt"] }
+
+[lints.rust]
+unsafe_code = "forbid"
+unused = { level = "warn", priority = -1 }
+dead_code = "warn"
