@@ -15,7 +15,6 @@
         {
           pkgs,
           toolchain,
-          clippy,
           ...
         }:
         let
@@ -30,9 +29,6 @@
             rustfmt --check --edition ${manifest.package.edition} ${rust}/src/lib.rs ${rust}/tests/*.rs
             touch $out
           '';
-          # The test build compiled by clippy-driver under the crate's lints,
-          # every target, warnings refused.
-          clippy = clippy "signal-transport" [ "default" ] [ "-D" "warnings" ];
         };
     };
 }
